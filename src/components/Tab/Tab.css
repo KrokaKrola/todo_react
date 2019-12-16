@@ -1,0 +1,45 @@
+.Tab {
+  padding: 20px;
+}
+
+.Tab ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Tab ul li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: #292222;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.Tab ul li span {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 1px solid #292222;
+  background-color: rgb(177, 176, 176);
+  position: relative;
+}
+
+.Tab ul li.active span:after {
+  content: '';
+  width: 7px;
+  height: 19px;
+  border: 2px solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.Tab ul li.active {
+  text-decoration: line-through;
+}

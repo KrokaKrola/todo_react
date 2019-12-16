@@ -1,0 +1,14 @@
+.Button {
+  box-shadow: none;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  text-decoration: underline;
+  transition: .2s ease;
+  cursor: pointer;
+}
+
+.Button:hover {
+  text-decoration-color: transparent;
+}

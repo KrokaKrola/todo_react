@@ -1,0 +1,22 @@
+.App {
+  height: 100vh;
+}
+
+.App-header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(101, 34, 189);
+  color: #fff;
+  font-size: 24px;
+  align-items: center;
+}
+
+.App-logo {
+  width: 100px;
+}
+
+main {
+  max-width: 680px;
+  margin: 150px auto;
+}
