@@ -26,20 +26,22 @@ Builds the app for production to the `build` folder.<br />
 
 * [x] create state scheme
 * [x] create project and components structure
-* [ ] create 3 tabs (one tab at a time)
+* [x] create 3 tabs
   * [x] Active todos
   * [x] Done todos
   * [x] All todos
 * [x] add basic styling
 * [x] add task button
-* [ ] reade all todo's from local storage on app mount
-* [ ] add unique id to each todo
+* [x] add unique id to each todo
   * [x] added uniqueId generator function
-* [ ] add 'Delete all tasks' button on Done todos tab
-* [ ] add 'Mark all tasks done' button on the All todos tab
-* [ ] add event listener to complete / uncomplete the task
+* [x] add 'Delete all tasks' button on Done todos tab
+* [x] add 'Mark all tasks done' button on the All todos tab
+* [x] add event listener to complete / uncomplete the task
+* [x] sort todo's in different tab's by it's state
+* [x] tasks left counter
+* [ ] add localStorage functionality
+* [ ] reade all todo's from local storage on app mount
 * [ ] add/delete todo's from local storage
 * [ ] add light/dark mode (optional)
-* [ ] sort todo's in different tab's by it's state
 * [ ] add propsType checker
 * [ ] add tests (optional)

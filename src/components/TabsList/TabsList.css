@@ -18,3 +18,7 @@
 .TabsList li:hover {
   background-color: rgb(228, 227, 227);
 }
+
+.TabsList li.active {
+  background-color: rgb(228, 227, 227);
+}

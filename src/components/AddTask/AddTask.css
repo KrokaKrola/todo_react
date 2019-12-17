@@ -1,0 +1,44 @@
+.AddTask {
+  position: relative;
+}
+.AddTask input {
+  height: 80px;
+  padding: 10px 50px;
+  font-size: 24px;
+  background-color: transparent;
+  width: 100%;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.AddTask button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid gray;
+}
+
+.AddTask button:hover:after {
+  opacity: 1;
+}
+
+.AddTask button:after {
+  content: '';
+  width: 4px;
+  height: 12px;
+  border: 2px solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0.5;
+  transition: .2s ease;
+}

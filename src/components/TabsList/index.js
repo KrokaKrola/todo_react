@@ -1,13 +1,30 @@
-import React from 'react';
-import './TabsList.css';
+import React from "react";
+import "./TabsList.css";
 
-const TabsList = () => {
+const TabsList = ({ tabs, handleTabChange }) => {
   return (
     <div className="TabsList">
       <ul>
-        <li>All todo's</li>
-        <li>Done</li>
-        <li>Active</li>
+        {tabs.map(tab => {
+          return (
+            <li
+              key={tab.id}
+              className={tab.active ? "active" : ""}
+              onClick={() => {
+                handleTabChange(prevState => {
+                  return prevState.map(item => {
+                    return {
+                      ...item,
+                      active: item.id === tab.id ? true : false
+                    };
+                  });
+                });
+              }}
+            >
+              {tab.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

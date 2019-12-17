@@ -1,18 +1,29 @@
-import React from 'react';
+import React from "react";
 import "./Tab.css";
-import Button from "./../Button";
 
-const Tab = () => {
+const TODOS_FILTER = {
+  All: todos => todos,
+  Active: todos => todos.filter(item => item.done === false),
+  Done: todos => todos.filter(item => item.done === true)
+}
+
+const Tab = ({ todosList, handleClick, activeTab }) => {
   return (
     <div className="Tab">
       <ul>
-        <li className="active"><span></span>Task 1</li>
-        <li><span></span>Task 2</li>
-        <li><span></span>Task 3</li>
+        {TODOS_FILTER[activeTab](todosList).map(item => {
+          return (
+            <li
+              onClick={() => handleClick(item.id)}
+              key={item.id}
+              className={item.done ? "active" : ""}
+            >
+              <span></span>
+              {item.name}
+            </li>
+          );
+        })}
       </ul>
-      <Button >
-        add task
-      </Button>
     </div>
   );
 };
