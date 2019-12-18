@@ -30,7 +30,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   async function getStorageTodos() {
-    let result = await JSON.parse(localStorage.getItem("todos"));
+    let result = await JSON.parse(localStorage.getItem("todos")) || [];
     setIsLoading(false);
     setTodosList(result);
   }
