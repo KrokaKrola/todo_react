@@ -39,9 +39,9 @@ Builds the app for production to the `build` folder.<br />
 * [x] add event listener to complete / uncomplete the task
 * [x] sort todo's in different tab's by it's state
 * [x] tasks left counter
-* [ ] add localStorage functionality
-* [ ] reade all todo's from local storage on app mount
-* [ ] add/delete todo's from local storage
-* [ ] add light/dark mode (optional)
-* [ ] add propsType checker
+* [x] delete todo button
+* [x] add localStorage functionality
+* [x] reade all todo's from local storage on app mount
+* [x] add/delete todo's from local storage
+* [ ] add propsType checker (optional)
 * [ ] add tests (optional)

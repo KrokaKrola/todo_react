@@ -38,6 +38,11 @@ main {
   padding: 0 10px;
 }
 
+.Loading {
+  display: block;
+  margin: 20px auto;
+}
+
 /* 
 .RemoveDone {
   margin-bottom: 15px;

@@ -14,7 +14,6 @@
   font-size: 18px;
   color: #292222;
   margin-bottom: 15px;
-  cursor: pointer;
 }
 
 .Tab ul li span {
@@ -25,10 +24,11 @@
   border: 1px solid #292222;
   background-color: rgb(177, 176, 176);
   position: relative;
+  cursor: pointer;
 }
 
 .Tab ul li.active span:after {
-  content: '';
+  content: "";
   width: 7px;
   height: 19px;
   border: 2px solid;
@@ -42,4 +42,27 @@
 
 .Tab ul li.active {
   text-decoration: line-through;
+}
+
+.RemoveTodo {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  opacity: 0.5;
+  transition: 0.2s ease;
+}
+
+.RemoveTodo:hover {
+  opacity: 0.8;
+}
+
+.RemoveTodo img {
+  display: block;
+  width: 20px;
+  height: 20px;
 }

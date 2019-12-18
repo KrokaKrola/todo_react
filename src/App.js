@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import logo from "./logo.svg";
+import Loading from "./loading.svg";
 import "./App.css";
 import TabsList from "./components/TabsList";
 import Tab from "./components/Tab";
@@ -25,18 +26,23 @@ import Button from "./components/Button";
 
 const App = () => {
   const todoInput = useRef(null);
-  const [todosList, setTodosList] = useState([
-    {
-      id: 324432324,
-      name: "todo_name",
-      done: false
-    },
-    {
-      id: 6323223423,
-      name: "todo_name",
-      done: true
-    }
-  ]);
+  const [todosList, setTodosList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function getStorageTodos() {
+    let result = await JSON.parse(localStorage.getItem("todos"));
+    setIsLoading(false);
+    setTodosList(result);
+  }
+
+  async function setNewStorageTodo(state) {
+    let newStorageState = await JSON.stringify(state);
+    localStorage.setItem('todos', newStorageState);
+  }
+
+  useEffect(() => {
+    getStorageTodos();
+  }, []);
 
   const [todosTabs, setTodosActive] = useState([
     {
@@ -60,9 +66,10 @@ const App = () => {
     return todosTabs.find(item => item.active === true).name;
   };
 
-  const addTodo = e => {
+  const addTodo = async e => {
     e.preventDefault();
     setTodosList(prevState => {
+      
       const newState = [
         {
           id: uniqueId(),
@@ -72,6 +79,7 @@ const App = () => {
         ...prevState
       ];
       todoInput.current.value = "";
+      setNewStorageTodo(newState);
       return newState;
     });
   };
@@ -81,26 +89,31 @@ const App = () => {
     setTodosList(prevState => {
       const newState = [...prevState];
       newState[todoIndex].done = !newState[todoIndex].done;
+      setNewStorageTodo(newState);
       return newState;
     });
   };
 
   const handleTodoAllComplete = () => {
     setTodosList(prevState => {
-      return [...prevState].map(todo => {
+      const newState = [...prevState].map(todo => {
         return {
           ...todo,
           done: true
         };
       });
+      setNewStorageTodo(newState);
+      return newState
     });
   };
 
   const handleRemoveComplete = () => {
     setTodosList(prevState => {
-      return [...prevState].filter(item => {
+      const newState = [...prevState].filter(item => {
         return item.done !== true;
       });
+      setNewStorageTodo(newState);
+      return newState
     });
   };
 
@@ -109,6 +122,16 @@ const App = () => {
       return todo.done ? sum : sum + 1;
     }, 0);
   };
+
+  const handleTodoDelete = (id) => {
+    setTodosList(prevState => {
+      const newState = [...prevState].filter(item => {
+        return item.id !== id;
+      });
+      setNewStorageTodo(newState);
+      return newState
+    });
+  } 
 
   return (
     <div className="App">
@@ -124,11 +147,17 @@ const App = () => {
             handleAllDone={handleTodoAllComplete}
           />
           <TabsList tabs={todosTabs} handleTabChange={setTodosActive} />
-          <Tab
-            todosList={todosList}
-            handleClick={handleTodoToggleDone}
-            activeTab={getActiveTab()}
-          />
+          {isLoading ? (
+            <img src={Loading} className="Loading" alt="Loading..." />
+          ) : (
+            <Tab
+              todosList={todosList}
+              handleClick={handleTodoToggleDone}
+              activeTab={getActiveTab()}
+              handleDelete={handleTodoDelete}
+            />
+          )}
+
           <div className="Tabs__bottom">
             <Button
               onClick={() => {
